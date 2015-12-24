@@ -14,7 +14,9 @@ RUN mkdir -p /protobuf \
 	&& rm -rf /protobuf \
 	&& apk del $buildDeps
 
-RUN go get -a github.com/golang/protobuf/protoc-gen-go
+RUN apk add -U git libstdc++ \
+	&& rm -rf /var/cache/apk/* \
+	&& go get -a github.com/golang/protobuf/protoc-gen-go
 
 ENTRYPOINT ["protoc"]
 CMD ["--help"]
