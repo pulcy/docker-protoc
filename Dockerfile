@@ -16,7 +16,8 @@ RUN mkdir -p /protobuf \
 
 RUN apk add -U git libstdc++ \
 	&& rm -rf /var/cache/apk/* \
-	&& go get -a github.com/golang/protobuf/protoc-gen-go
+	&& go get -a github.com/golang/protobuf/protoc-gen-go \
+	&& go get google.golang.org/grpc
 
 ENTRYPOINT ["protoc"]
 CMD ["--help"]
